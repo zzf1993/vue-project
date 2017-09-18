@@ -1,7 +1,7 @@
 <template>
     <div class="login-bg">
     	<div class="login-from">
-    		<h1>Employer Log in</h1>
+    		<h1>随便输点啥</h1>
     		<div class="inset">
 	    		<div>
 	    			<label>账号:</label>
@@ -12,14 +12,13 @@
 	    			<input type="password" v-model="login.psd">
 	    		</div>
 				<div class="forget" v-if="true">
-					<router-link to="/home">忘记密码？</router-link>
+					<router-link to="/home">忘记密码？{{login.user}}</router-link>
 				</div>
 				<div  class="login-btn">
-    				<el-button :disabled="login.btn">Login in</el-button>
+    				<el-button :disabled="login.btn" @click="load">Login in</el-button>
 				</div>
     		</div>
     	</div>
-       <router-link to="/home">登录到首页</router-link>
     </div>
 </template>
 
@@ -36,15 +35,19 @@
 		},
 		methods:{
 				loginTo:function(){
-					if(this.login.psd==""||this.login.user==""){
+					// this.login.user = "abc";
+					if(this.login.user !="" || this.login.psd != ""){
 						this.login.btn = true;
 					}else{
 						this.login.btn = false;
 					}
+				},
+				load:function(){
+					this.$router.push({path:"/home"});
 				}
 			},
 		mounted:function(){
-				// this.loginTo();
+				this.loginTo();
 		}
 	};
 </script>
@@ -57,7 +60,6 @@
 	}
 	.login-from{
 		width:360px;
-		height:400px;
 		background: #111;
 		margin: 0 auto;
 		box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);

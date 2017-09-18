@@ -10,8 +10,8 @@
                     </span>
 				  </el-button>
 				  <el-dropdown-menu slot="dropdown">
-				    <el-dropdown-item v-for='item in userInfo'>
-                        <a>{{item}} </a>
+				    <el-dropdown-item v-for='(item, index) in userInfo'>
+                        <a @click="jupForSelfPath(item.path,'add')">{{item.text}}</a>
                     </el-dropdown-item>
 				  </el-dropdown-menu>
 			</el-dropdown>
@@ -25,9 +25,21 @@
             return {
                 name: '我不是斯巴达',
                 userInfo:{
-                    more:'更多信息',
-                    out:'退出'
+                    more:{
+                        path:'/login',
+                        text:'更多信息'
+                    },
+                    out:{
+                        path:'/login',
+                        text:'退出'
+                    }
                 }
+            }
+        },
+        methods:{
+            jupForSelfPath:function(Path){
+                this.$router.push({path:Path});
+                // console.log(e);
             }
         }
     }
