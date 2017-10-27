@@ -28,6 +28,10 @@ export default new Router({
                 {
                     path:'/table',
                     component: resolve => require(['../components/page/table/Table.vue'],resolve)
+                },
+                {
+                    path:'/readme',
+                    component: resolve => require(['../components/demo/demo01.vue'],resolve)
                 }
         	]
         }

@@ -1,12 +1,12 @@
 <template>
     <div class="header">
-        <div class="logo">vue后端管理平台</div>
+        <div class="logo" @click="setAuthor">vue后端管理平台</div>
         <div class="user-info">
         	<el-dropdown>
 				  <el-button type="primary">
 				    <span class="el-dropdown-link">
                         <img class="user-logo" src="../../../static/img/img.jpg">
-                        {{name}}
+                        {{author}}
                     </span>
 				  </el-button>
 				  <el-dropdown-menu slot="dropdown">
@@ -33,13 +33,18 @@
                         path:'/login',
                         text:'退出'
                     }
-                }
+                },
+                changeName:'程咬金'
             }
         },
         methods:{
             jupForSelfPath:function(Path){
                 this.$router.push({path:Path});
                 // console.log(e);
+            },
+            setAuthor: function(){
+                // console.log(this.changeName);
+                this.$store.commit('newAuthor',this.changeName);
             }
         }
     }
